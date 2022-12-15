@@ -26,11 +26,12 @@ class App extends React.Component {
             number,
         };
 
+        if (this.state.contacts.some(el => el.name === name)) {
+            alert(`${name} is alredy in contacts`);
+            return;
+        }
+
         this.setState(prevState => {
-            if (prevState.contacts.some(el => el.name.includes(name))) {
-                alert(`${name} is alredy in contacts`);
-                return;
-            }
             return {
                 contacts: [...prevState.contacts, newData],
             };
